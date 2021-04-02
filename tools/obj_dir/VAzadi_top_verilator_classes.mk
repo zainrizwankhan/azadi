@@ -33,7 +33,7 @@ VM_CLASSES_FAST += \
 	VAzadi_top_verilator_tlul_socket_m1__pi7 \
 	VAzadi_top_verilator_gpio_reg_pkg \
 	VAzadi_top_verilator_rv_plic_reg_pkg \
-	VAzadi_top_verilator_tlul_fifo_sync__RCz15_RDz15 \
+	VAzadi_top_verilator_tlul_fifo_sync__RCz16_RDz16 \
 
 # Generated module classes, non-fast-path, compile with low/medium optimization
 VM_CLASSES_SLOW += \
@@ -44,7 +44,7 @@ VM_CLASSES_SLOW += \
 	VAzadi_top_verilator_tlul_socket_m1__pi7__Slow \
 	VAzadi_top_verilator_gpio_reg_pkg__Slow \
 	VAzadi_top_verilator_rv_plic_reg_pkg__Slow \
-	VAzadi_top_verilator_tlul_fifo_sync__RCz15_RDz15__Slow \
+	VAzadi_top_verilator_tlul_fifo_sync__RCz16_RDz16__Slow \
 
 # Generated support classes, fast-path, compile with highest optimization
 VM_SUPPORT_FAST += \

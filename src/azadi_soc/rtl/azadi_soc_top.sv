@@ -28,11 +28,14 @@ assign RESET = ~reset_ni;
 
 logic system_rst_ni;
 
-wire [19:0] gpio_in;
-wire [19:0] gpio_out;
+logic [19:0] gpio_in;
+logic [19:0] gpio_out;
 
 assign gpio_in = gpio_i;
 assign gpio_o = gpio_out; 
+
+logic [31:0] wdata_i;
+logic [3:0]  we_i;
 
 
 // end here
@@ -123,7 +126,7 @@ brq_core_top #(
     .RV32B            (brq_pkg::RV32BNone), 
     .RegFile          (brq_pkg::RegFileFF), 
     .BranchTargetALU  (1'b0), 
-    .WritebackStage   (1'b1), 
+    .WritebackStage   (1'b0), 
     .ICache           (1'b0), 
     .ICacheECC        (1'b0), 
     .BranchPredictor  (1'b0), 
@@ -338,7 +341,7 @@ instr_mem_top iccm (
   .wdata      (),
   .rdata      (tlul_data),
   .rvalid     (instr_valid),
-  .we         ('0)
+  .we         ()
 );
 
  tlul_sram_adapter #(

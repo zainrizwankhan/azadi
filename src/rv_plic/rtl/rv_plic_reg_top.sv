@@ -928,14 +928,13 @@ module rv_plic_reg_top (
     // to register interface (read)
     .qs     (ip_p_20_qs)
   );
-
-
-  // F[p_21]: 21:21
-  prim_subreg #(
+    prim_subreg #(
     .DW      (1),
     .SWACCESS("RO"),
     .RESVAL  (1'h0)
   ) u_ip_p_21 (
+
+  // F[p_21]: 21:21Edge-triggered
     .clk_i   (clk_i    ),
     .rst_ni  (rst_ni  ),
 
@@ -986,11 +985,6 @@ module rv_plic_reg_top (
     .SWACCESS("RO"),
     .RESVAL  (1'h0)
   ) u_ip_p_23 (
-    .clk_i   (clk_i    ),
-    .rst_ni  (rst_ni  ),
-
-    .we     (1'b0),
-    .wd     ('0  ),
 
     // from internal hardware
     .de     (hw2reg.ip[23].de),

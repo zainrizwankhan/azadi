@@ -1,6 +1,6 @@
-VAzadi_top_verilator_tlul_fifo_sync__RCz15_RDz15__Slow.o: \
- VAzadi_top_verilator_tlul_fifo_sync__RCz15_RDz15__Slow.cpp \
- VAzadi_top_verilator_tlul_fifo_sync__RCz15_RDz15.h \
+VAzadi_top_verilator_tlul_fifo_sync__RCz16_RDz16__Slow.o: \
+ VAzadi_top_verilator_tlul_fifo_sync__RCz16_RDz16__Slow.cpp \
+ VAzadi_top_verilator_tlul_fifo_sync__RCz16_RDz16.h \
  /usr/local/share/verilator/include/verilated_heavy.h \
  /usr/local/share/verilator/include/verilated.h \
  /usr/local/share/verilator/include/verilatedos.h \

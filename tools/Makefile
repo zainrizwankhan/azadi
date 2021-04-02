@@ -65,6 +65,8 @@ build:
 	@mkdir $(TEST_DIR)/output
 	$(GCC_PREFIX) $(GCC_FLAGS) -c $(TEST_DIR)/$(TEST).c -o $(TEST_DIR)/output/$(TEST) -lm -lgcc
 	$(GCC_PREFIX) $(GCC_FLAGS) -c $(TEST_DIR)/common/plic_driver.c -o $(TEST_DIR)/output/plic -lm -lgcc
+	$(GCC_PREFIX) $(GCC_FLAGS) -c $(TEST_DIR)/common/plic_driver.c -o $(TEST_DIR)/output/plic -lm -lgcc
+	$(GCC_PREFIX) $(GCC_FLAGS) -c $(TEST_DIR)/common/gpio.c -o $(TEST_DIR)/output/gpio -lm -lgcc
 	$(GCC_PREFIX) $(GCC_FLAGS) -c $(TEST_DIR)/common/init.c -o $(TEST_DIR)/output/init -lm -lgcc
 	$(GCC_PREFIX) $(GCC_FLAGS) -c $(TEST_DIR)/common/traps.c -o $(TEST_DIR)/output/traps -lm -lgcc
 	$(GCC_PREFIX) $(LINK_FLAGS) $(TEST_DIR)/common/start.S $(TEST_DIR)/common/trap.S $(TEST_DIR)/output/$(TEST) $(TEST_DIR)/output/plic $(TEST_DIR)/output/traps $(TEST_DIR)/output/init -o $(TEST_DIR)/output/$(TEST).merl -lgcc

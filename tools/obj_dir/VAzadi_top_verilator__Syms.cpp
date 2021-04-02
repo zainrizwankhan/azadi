@@ -6,7 +6,7 @@
 #include "VAzadi_top_verilator_tlul_socket_m1__pi7.h"
 #include "VAzadi_top_verilator_gpio_reg_pkg.h"
 #include "VAzadi_top_verilator_rv_plic_reg_pkg.h"
-#include "VAzadi_top_verilator_tlul_fifo_sync__RCz15_RDz15.h"
+#include "VAzadi_top_verilator_tlul_fifo_sync__RCz16_RDz16.h"
 
 
 
