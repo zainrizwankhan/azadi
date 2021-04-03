@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2018.2 (64-bit)
+# SW Build 2258646 on Thu Jun 14 20:02:38 MDT 2018
+# IP Build 2256618 on Thu Jun 14 22:10:49 MDT 2018
+# Start of session at: Sat Apr  3 15:07:33 2021
+# Process ID: 256994
+# Current directory: /home/merl/github_repos/azadi/fpga/debug/debug.runs/impl_1
+# Command line: vivado -log azadi_top_arty7.vdi -applog -product Vivado -messageDb vivado.pb -mode batch -source azadi_top_arty7.tcl -notrace
+# Log file: /home/merl/github_repos/azadi/fpga/debug/debug.runs/impl_1/azadi_top_arty7.vdi
+# Journal file: /home/merl/github_repos/azadi/fpga/debug/debug.runs/impl_1/vivado.jou
+#-----------------------------------------------------------
+source azadi_top_arty7.tcl -notrace

@@ -1,7 +1,7 @@
 Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2018.2 (lin64) Build 2258646 Thu Jun 14 20:02:38 MDT 2018
-| Date         : Sat Apr  3 02:46:37 2021
+| Date         : Sat Apr  3 15:10:19 2021
 | Host         : merl-HP-Compaq-Pro-6300-Microtower running 64-bit Ubuntu 20.10
 | Command      : report_methodology -file azadi_top_arty7_methodology_drc_routed.rpt -pb azadi_top_arty7_methodology_drc_routed.pb -rpx azadi_top_arty7_methodology_drc_routed.rpx
 | Design       : azadi_top_arty7
