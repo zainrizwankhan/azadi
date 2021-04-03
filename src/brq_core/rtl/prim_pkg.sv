@@ -15,4 +15,4 @@ package prim_pkg;
     ImplGeneric,
     ImplXilinx
   } impl_e;
-endpackage : prim_pkg
+endpackage //:prim_pkg

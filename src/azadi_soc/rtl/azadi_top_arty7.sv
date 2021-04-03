@@ -3,7 +3,7 @@
 
 module azadi_top_arty7( 
 
-  input clk_i,
+  input clk,
   input rst_ni,
 
   input  [3:0] gpio_i,
@@ -16,6 +16,19 @@ module azadi_top_arty7(
   output       jtag_tdo_o
 
 );
+
+logic clk_i;
+
+clk_wiz_0  clk_wiz
+ (
+  // Clock out ports
+  .clk_out1(clk_i),
+  // Status and control signals
+  .resetn(rst_ni),
+ // Clock in ports
+  .clk_in1(clk)
+ );
+
 
       //localparam logic [31:0] JTAG_IDCODE = 32'h04F5484D;
     localparam logic [31:0] JTAG_IDCODE = {

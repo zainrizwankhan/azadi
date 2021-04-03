@@ -985,17 +985,22 @@ module rv_plic_reg_top (
     .SWACCESS("RO"),
     .RESVAL  (1'h0)
   ) u_ip_p_23 (
+   .clk_i   (clk_i    ),
+  .rst_ni  (rst_ni  ),
 
-    // from internal hardware
-    .de     (hw2reg.ip[23].de),
-    .d      (hw2reg.ip[23].d ),
+  .we     (1'b0),
+  .wd     ('0  ),
 
-    // to internal hardware
-    .qe     (),
-    .q      (),
+  // from internal hardware
+  .de     (hw2reg.ip[23].de),
+  .d      (hw2reg.ip[23].d ),
 
-    // to register interface (read)
-    .qs     (ip_p_23_qs)
+  // to internal hardware
+  .qe     (),
+  .q      (),
+
+  // to register interface (read)
+  .qs     (ip_p_23_qs)
   );
 
 
@@ -2233,21 +2238,23 @@ module rv_plic_reg_top (
     .SWACCESS("RW"),
     .RESVAL  (3'h0)
   ) u_prio7 (
-    .clk_i   (clk_i    ),
-    .rst_ni  (rst_ni  ),
+   .clk_i   (clk_i    ),
+  .rst_ni  (rst_ni  ),
 
-    // from register interfaceqs;
+  // from register interface
+  .we     (prio7_we),
+  .wd     (prio7_wd),
 
-    // from internal hardware
-    .de     (1'b0),
-    .d      ('0  ),
+  // from internal hardware
+  .de     (1'b0),
+  .d      ('0  ),
 
-    // to internal hardware
-    .qe     (),
-    .q      (reg2hw.prio7.q ),
+  // to internal hardware
+  .qe     (),
+  .q      (reg2hw.prio7.q ),
 
-    // to register interface (read)
-    .qs     (prio7_qs)
+  // to register interface (read)
+  .qs     (prio7_qs)
   );
 
 
@@ -3087,21 +3094,23 @@ module rv_plic_reg_top (
     .SWACCESS("RW"),
     .RESVAL  (1'h0)
   ) u_ie0_e_7 (
-    .clk_i   (clk_i    ),
-    .rst_ni  (rst_ni  ),
+   .clk_i   (clk_i    ),
+  .rst_ni  (rst_ni  ),
 
-    // from register interface
-    .we     (ie0_e_7_we),
-    .wd     (ie0_e_7_wd),
+  // from register interface
+  .we     (ie0_e_7_we),
+  .wd     (ie0_e_7_wd),
 
-    // from internal hardware
-    .de     (1'b0),
-    // to internal hardware
-    .qe     (),
-    .q      (reg2hw.ie0[7].q ),
+  // from internal hardware
+  .de     (1'b0),
+  .d      ('0  ),
 
-    // to register interface (read)
-    .qs     (ie0_e_7_qs)
+  // to internal hardware
+  .qe     (),
+  .q      (reg2hw.ie0[7].q ),
+
+  // to register interface (read)
+  .qs     (ie0_e_7_qs)
   );
 
 
@@ -3589,6 +3598,12 @@ module rv_plic_reg_top (
     // from internal hardware
     .de     (1'b0),
     .d      ('0  ),
+        // to internal hardware
+    .qe     (),
+    .q      (reg2hw.ie0[26].q ),
+
+    // to register interface (read)
+    .qs     (ie0_e_26_qs)
 
   );
 

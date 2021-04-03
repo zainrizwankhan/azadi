@@ -78,8 +78,8 @@ module gpio_reg_top (
   logic [31:0] direct_out_wd;
   logic direct_out_we;
   logic direct_out_re;
-  logic [9:0] masked_out_lower_data_qs;
-  logic [9:0] masked_out_lower_data_wd;
+  logic [15:0] masked_out_lower_data_qs;
+  logic [15:0] masked_out_lower_data_wd;
   logic masked_out_lower_data_we;
   logic masked_out_lower_data_re;
   logic [15:0] masked_out_lower_mask_wd;
@@ -578,11 +578,11 @@ module gpio_reg_top (
   assign direct_out_re = addr_hit[4] && reg_re;
 
   assign masked_out_lower_data_we = addr_hit[5] & reg_we & ~wr_err;
-  assign masked_out_lower_data_wd = reg_wdata[9:0];
+  assign masked_out_lower_data_wd = reg_wdata[15:0];
   assign masked_out_lower_data_re = addr_hit[5] && reg_re;
 
   assign masked_out_lower_mask_we = addr_hit[5] & reg_we & ~wr_err;
-  assign masked_out_lower_mask_wd = {12'b111111111111,reg_wdata[19:10]};
+  assign masked_out_lower_mask_wd = reg_wdata[31:16];
 
   assign masked_out_upper_data_we = addr_hit[6] & reg_we & ~wr_err;
   assign masked_out_upper_data_wd = reg_wdata[15:0];

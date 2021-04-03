@@ -109,10 +109,10 @@ package gpio_reg_pkg;
 
   typedef struct packed {
     struct packed {
-      logic [9:0] d;
+      logic [15:0] d;
     } data;
     struct packed {
-      logic [9:0] d;
+      logic [15:0] d;
     } mask;
   } gpio_hw2reg_masked_out_lower_reg_t;
 

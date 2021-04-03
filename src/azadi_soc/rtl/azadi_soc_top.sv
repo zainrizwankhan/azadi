@@ -179,7 +179,7 @@ brq_core_top #(
   .clk_i(clock),       // clock
   .rst_ni(reset_ni),      // asynchronous reset active low, connect PoR
                                           // here, not the system reset
-  .testmode_i(),
+  .testmode_i('0),
   .ndmreset_o(dbg_rst),  // non-debug module reset
   .dmactive_o(),  // debug module is active
   .debug_req_o(dbg_req), // async debug request
