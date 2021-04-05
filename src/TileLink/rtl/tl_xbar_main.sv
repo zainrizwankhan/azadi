@@ -259,8 +259,8 @@ module tl_xbar_main (
 // host 2 socket
 
   tlul_socket_1n #(
-    .HReqDepth (4'h0),
-    .HRspDepth (4'h0),
+    .HReqDepth (4'h1),
+    .HRspDepth (4'h1),
     .DReqDepth (36'h0),
     .DRspDepth (36'h0),
     .N         (10)

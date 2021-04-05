@@ -1,4 +1,8 @@
  
+`ifdef RISCV_FORMAL
+  `define RVFI
+`endif
+
 module azadi_soc_top #(
   parameter logic [31:0] JTAG_ID = 32'h 0000_0001,
   parameter logic DirectDmiTap = 1'b1
@@ -16,7 +20,36 @@ module azadi_soc_top #(
   input               jtag_tms_i,
   input               jtag_trst_ni,
   input               jtag_tdi_i,
-  output              jtag_tdo_o
+  output              jtag_tdo_o,
+
+  // RISC-V Formal Interface
+    // Does not comply with the coding standards of _i/_o suffixes, but follows
+    // the convention of RISC-V Formal Interface Specification.
+`ifdef RVFI
+    output logic        rvfi_valid,
+    output logic [63:0] rvfi_order,
+    output logic [31:0] rvfi_insn,
+    output logic        rvfi_trap,
+    output logic        rvfi_halt,
+    output logic        rvfi_intr,
+    output logic [ 1:0] rvfi_mode,
+    output logic [ 1:0] rvfi_ixl,
+    output logic [ 4:0] rvfi_rs1_addr,
+    output logic [ 4:0] rvfi_rs2_addr,
+    output logic [ 4:0] rvfi_rs3_addr,
+    output logic [31:0] rvfi_rs1_rdata,
+    output logic [31:0] rvfi_rs2_rdata,
+    output logic [31:0] rvfi_rs3_rdata,
+    output logic [ 4:0] rvfi_rd_addr,
+    output logic [31:0] rvfi_rd_wdata,
+    output logic [31:0] rvfi_pc_rdata,
+    output logic [31:0] rvfi_pc_wdata,
+    output logic [31:0] rvfi_mem_addr,
+    output logic [ 3:0] rvfi_mem_rmask,
+    output logic [ 3:0] rvfi_mem_wmask,
+    output logic [31:0] rvfi_mem_rdata,
+    output logic [31:0] rvfi_mem_wdata
+`endif
 
 );
 
@@ -145,7 +178,33 @@ brq_core_top #(
     .fetch_enable_i (1'b1),
     .alert_minor_o  (),
     .alert_major_o  (),
-    .core_sleep_o   ()
+    .core_sleep_o   (),
+
+    `ifdef RVFI
+    .rvfi_valid (rvfi_valid),
+    .rvfi_order (rvfi_order),
+    .rvfi_insn (rvfi_insn),
+    .rvfi_trap (rvfi_trap),
+    .rvfi_halt (rvfi_halt),
+    .rvfi_intr (rvfi_intr),
+    .rvfi_mode (rvfi_mode),
+    .rvfi_ixl (rvfi_ixl),
+    .rvfi_rs1_addr (rvfi_rs1_addr),
+    .rvfi_rs2_addr (rvfi_rs2_addr),
+    .rvfi_rs3_addr (rvfi_rs3_addr),
+    .rvfi_rs1_rdata (rvfi_rs1_rdata),
+    .rvfi_rs2_rdata (rvfi_rs2_rdata),
+    .rvfi_rs3_rdata (rvfi_rs3_rdata),
+    .rvfi_rd_addr (rvfi_rd_addr),
+    .rvfi_rd_wdata (rvfi_rd_wdata),
+    .rvfi_pc_rdata (rvfi_pc_rdata),
+    .rvfi_pc_wdata (rvfi_pc_wdata),
+    .rvfi_mem_addr (rvfi_mem_addr),
+    .rvfi_mem_rmask (rvfi_mem_rmask),
+    .rvfi_mem_wmask (rvfi_mem_wmask),
+    .rvfi_mem_rdata (rvfi_mem_rdata),
+    .rvfi_mem_wdata (rvfi_mem_wdata)
+`endif
 );
 
 // Debug module

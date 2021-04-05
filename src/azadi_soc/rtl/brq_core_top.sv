@@ -1,6 +1,12 @@
 //`include "/home/usman/Documents/ibex/rtl/ibex_pkg.sv"
 //`include "/home/merl/Documents/ibex/rtl/prim_pkg.sv"
 
+
+`ifdef RISCV_FORMAL
+  `define RVFI
+`endif
+
+
 module brq_core_top #(
     parameter int unsigned DmHaltAddr       =0,
     parameter int unsigned DmExceptionAddr  =0
@@ -36,7 +42,36 @@ module brq_core_top #(
     input  logic        fetch_enable_i,
     output logic        alert_minor_o,
     output logic        alert_major_o,
-    output logic        core_sleep_o
+    output logic        core_sleep_o,
+
+    // RISC-V Formal Interface
+    // Does not comply with the coding standards of _i/_o suffixes, but follows
+    // the convention of RISC-V Formal Interface Specification.
+`ifdef RVFI
+    output logic        rvfi_valid,
+    output logic [63:0] rvfi_order,
+    output logic [31:0] rvfi_insn,
+    output logic        rvfi_trap,
+    output logic        rvfi_halt,
+    output logic        rvfi_intr,
+    output logic [ 1:0] rvfi_mode,
+    output logic [ 1:0] rvfi_ixl,
+    output logic [ 4:0] rvfi_rs1_addr,
+    output logic [ 4:0] rvfi_rs2_addr,
+    output logic [ 4:0] rvfi_rs3_addr,
+    output logic [31:0] rvfi_rs1_rdata,
+    output logic [31:0] rvfi_rs2_rdata,
+    output logic [31:0] rvfi_rs3_rdata,
+    output logic [ 4:0] rvfi_rd_addr,
+    output logic [31:0] rvfi_rd_wdata,
+    output logic [31:0] rvfi_pc_rdata,
+    output logic [31:0] rvfi_pc_wdata,
+    output logic [31:0] rvfi_mem_addr,
+    output logic [ 3:0] rvfi_mem_rmask,
+    output logic [ 3:0] rvfi_mem_wmask,
+    output logic [31:0] rvfi_mem_rdata,
+    output logic [31:0] rvfi_mem_wdata
+`endif
 );
 import brq_pkg::*;
 
@@ -109,29 +144,29 @@ brq_core #(
     // Does not comply with the coding standards of _i/_o suffixes, but follows
     // the convention of RISC-V Formal Interface Specification.
 `ifdef RVFI
-    .rvfi_valid (),
-    .rvfi_order (),
-    .rvfi_insn (),
-    .rvfi_trap (),
-    .rvfi_halt (),
-    .rvfi_intr (),
-    .rvfi_mode (),
-    .rvfi_ixl (),
-    .rvfi_rs1_addr (),
-    .rvfi_rs2_addr (),
-    .rvfi_rs3_addr (),
-    .rvfi_rs1_rdata (),
-    .rvfi_rs2_rdata (),
-    .rvfi_rs3_rdata (),
-    .rvfi_rd_addr (),
-    .rvfi_rd_wdata (),
-    .rvfi_pc_rdata (),
-    .rvfi_pc_wdata (),
-    .rvfi_mem_addr (),
-    .rvfi_mem_rmask (),
-    .rvfi_mem_wmask (),
-    .rvfi_mem_rdata (),
-    .rvfi_mem_wdata (),
+    .rvfi_valid (rvfi_valid),
+    .rvfi_order (rvfi_order),
+    .rvfi_insn (rvfi_insn),
+    .rvfi_trap (rvfi_trap),
+    .rvfi_halt (rvfi_halt),
+    .rvfi_intr (rvfi_intr),
+    .rvfi_mode (rvfi_mode),
+    .rvfi_ixl (rvfi_ixl),
+    .rvfi_rs1_addr (rvfi_rs1_addr),
+    .rvfi_rs2_addr (rvfi_rs2_addr),
+    .rvfi_rs3_addr (rvfi_rs3_addr),
+    .rvfi_rs1_rdata (rvfi_rs1_rdata),
+    .rvfi_rs2_rdata (rvfi_rs2_rdata),
+    .rvfi_rs3_rdata (rvfi_rs3_rdata),
+    .rvfi_rd_addr (rvfi_rd_addr),
+    .rvfi_rd_wdata (rvfi_rd_wdata),
+    .rvfi_pc_rdata (rvfi_pc_rdata),
+    .rvfi_pc_wdata (rvfi_pc_wdata),
+    .rvfi_mem_addr (rvfi_mem_addr),
+    .rvfi_mem_rmask (rvfi_mem_rmask),
+    .rvfi_mem_wmask (rvfi_mem_wmask),
+    .rvfi_mem_rdata (rvfi_mem_rdata),
+    .rvfi_mem_wdata (rvfi_mem_wdata),
 `endif
 
     // CPU Control Signals

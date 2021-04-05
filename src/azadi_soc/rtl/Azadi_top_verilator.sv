@@ -1,4 +1,7 @@
- 
+`ifdef RISCV_FORMAL
+  `define RVFI
+`endif 
+
 module Azadi_top_verilator #(
   parameter  logic DirectDmiTap = 1'b1
 )(
@@ -6,7 +9,36 @@ module Azadi_top_verilator #(
   input reset_ni,
 
   input  logic [19:0] gpio_i,
-  output logic [19:0] gpio_o
+  output logic [19:0] gpio_o,
+
+   // RISC-V Formal Interface
+    // Does not comply with the coding standards of _i/_o suffixes, but follows
+    // the convention of RISC-V Formal Interface Specification.
+`ifdef RVFI
+    output logic        rvfi_valid,
+    output logic [63:0] rvfi_order,
+    output logic [31:0] rvfi_insn,
+    output logic        rvfi_trap,
+    output logic        rvfi_halt,
+    output logic        rvfi_intr,
+    output logic [ 1:0] rvfi_mode,
+    output logic [ 1:0] rvfi_ixl,
+    output logic [ 4:0] rvfi_rs1_addr,
+    output logic [ 4:0] rvfi_rs2_addr,
+    output logic [ 4:0] rvfi_rs3_addr,
+    output logic [31:0] rvfi_rs1_rdata,
+    output logic [31:0] rvfi_rs2_rdata,
+    output logic [31:0] rvfi_rs3_rdata,
+    output logic [ 4:0] rvfi_rd_addr,
+    output logic [31:0] rvfi_rd_wdata,
+    output logic [31:0] rvfi_pc_rdata,
+    output logic [31:0] rvfi_pc_wdata,
+    output logic [31:0] rvfi_mem_addr,
+    output logic [ 3:0] rvfi_mem_rmask,
+    output logic [ 3:0] rvfi_mem_wmask,
+    output logic [31:0] rvfi_mem_rdata,
+    output logic [31:0] rvfi_mem_wdata
+`endif
 //  output logic [19:0] gpio_oe
 
 
@@ -44,7 +76,33 @@ module Azadi_top_verilator #(
     .jtag_tms_i(cio_jtag_tms),
     .jtag_trst_ni(cio_jtag_trst_n),
     .jtag_tdi_i(cio_jtag_tdi),
-    .jtag_tdo_o(cio_jtag_tdo)
+    .jtag_tdo_o(cio_jtag_tdo),
+
+  `ifdef RVFI
+    .rvfi_valid (rvfi_valid),
+    .rvfi_order (rvfi_order),
+    .rvfi_insn (rvfi_insn),
+    .rvfi_trap (rvfi_trap),
+    .rvfi_halt (rvfi_halt),
+    .rvfi_intr (rvfi_intr),
+    .rvfi_mode (rvfi_mode),
+    .rvfi_ixl (rvfi_ixl),
+    .rvfi_rs1_addr (rvfi_rs1_addr),
+    .rvfi_rs2_addr (rvfi_rs2_addr),
+    .rvfi_rs3_addr (rvfi_rs3_addr),
+    .rvfi_rs1_rdata (rvfi_rs1_rdata),
+    .rvfi_rs2_rdata (rvfi_rs2_rdata),
+    .rvfi_rs3_rdata (rvfi_rs3_rdata),
+    .rvfi_rd_addr (rvfi_rd_addr),
+    .rvfi_rd_wdata (rvfi_rd_wdata),
+    .rvfi_pc_rdata (rvfi_pc_rdata),
+    .rvfi_pc_wdata (rvfi_pc_wdata),
+    .rvfi_mem_addr (rvfi_mem_addr),
+    .rvfi_mem_rmask (rvfi_mem_rmask),
+    .rvfi_mem_wmask (rvfi_mem_wmask),
+    .rvfi_mem_rdata (rvfi_mem_rdata),
+    .rvfi_mem_wdata (rvfi_mem_wdata)
+`endif
   
   );
 

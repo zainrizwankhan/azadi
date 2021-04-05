@@ -47,7 +47,7 @@ DFFRAMD dccm (
 tlul_sram_adapter #(
   .SramAw       (12),
   .SramDw       (32), 
-  .Outstanding  (4),  
+  .Outstanding  (2),  
   .ByteAccess   (1),
   .ErrOnWrite   (0),  // 1: Writes not allowed, automatically error
   .ErrOnRead    (0) 
