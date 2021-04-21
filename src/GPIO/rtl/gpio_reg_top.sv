@@ -78,8 +78,8 @@ module gpio_reg_top (
   logic [31:0] direct_out_wd;
   logic direct_out_we;
   logic direct_out_re;
-  logic [9:0] masked_out_lower_data_qs;
-  logic [9:0] masked_out_lower_data_wd;
+  logic [15:0] masked_out_lower_data_qs;
+  logic [15:0] masked_out_lower_data_wd;
   logic masked_out_lower_data_we;
   logic masked_out_lower_data_re;
   logic [15:0] masked_out_lower_mask_wd;
