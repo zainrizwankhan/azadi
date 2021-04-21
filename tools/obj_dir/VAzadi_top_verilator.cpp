@@ -33,7 +33,7 @@ void VAzadi_top_verilator::eval_step() {
             Verilated::debug(1);
             __Vchange = _change_request(vlSymsp);
             Verilated::debug(__Vsaved_debug);
-            VL_FATAL_MT("/home/usman/Documents/azadi/src/azadi_soc/rtl/Azadi_top_verilator.sv", 5, "",
+            VL_FATAL_MT("/home/usman/Documents/azadi//src/azadi_soc/rtl/Azadi_top_verilator.sv", 5, "",
                 "Verilated model didn't converge\n"
                 "- See DIDNOTCONVERGE in the Verilator manual");
         } else {
@@ -60,7 +60,7 @@ void VAzadi_top_verilator::_eval_initial_loop(VAzadi_top_verilator__Syms* __rest
             Verilated::debug(1);
             __Vchange = _change_request(vlSymsp);
             Verilated::debug(__Vsaved_debug);
-            VL_FATAL_MT("/home/usman/Documents/azadi/src/azadi_soc/rtl/Azadi_top_verilator.sv", 5, "",
+            VL_FATAL_MT("/home/usman/Documents/azadi//src/azadi_soc/rtl/Azadi_top_verilator.sv", 5, "",
                 "Verilated model didn't DC converge\n"
                 "- See DIDNOTCONVERGE in the Verilator manual");
         } else {

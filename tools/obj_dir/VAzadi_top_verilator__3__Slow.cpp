@@ -2648,7 +2648,7 @@ void VAzadi_top_verilator::_ctor_var_reset() {
     Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__u_s1n_14__DOT__err_resp__DOT__err_req_pending = VL_RAND_RESET_I(1);
     Azadi_top_verilator__DOT__top_verilator__DOT__periph_switch__DOT__u_s1n_14__DOT__err_resp__DOT__err_rsp_pending = VL_RAND_RESET_I(1);
     VL_RAND_RESET_W(459, Azadi_top_verilator__DOT__top_verilator__DOT__GPIO__DOT__reg2hw);
-    VL_RAND_RESET_W(246, Azadi_top_verilator__DOT__top_verilator__DOT__GPIO__DOT__hw2reg);
+    VL_RAND_RESET_W(258, Azadi_top_verilator__DOT__top_verilator__DOT__GPIO__DOT__hw2reg);
     Azadi_top_verilator__DOT__top_verilator__DOT__GPIO__DOT__cio_gpio_q = VL_RAND_RESET_I(32);
     Azadi_top_verilator__DOT__top_verilator__DOT__GPIO__DOT__cio_gpio_en_q = VL_RAND_RESET_I(32);
     Azadi_top_verilator__DOT__top_verilator__DOT__GPIO__DOT__data_in_d = VL_RAND_RESET_I(32);

@@ -47,13 +47,13 @@ VL_CTOR_IMP(VAzadi_top_verilator), __Vm_mt_4(1), __Vm_mt_5(1),
   __Vm_mt_21(2), __Vm_mt_27(1), __Vm_mt_28(2), __Vm_mt_30(3), 
   __Vm_mt_32(1), __Vm_mt_12(2), __Vm_mt_20(6), __Vm_mt_23(1), 
   __Vm_mt_33(3), __Vm_mt_34(2), __Vm_mt_35(2), __Vm_mt_37(2), 
-  __Vm_mt_38(1), __Vm_mt_40(1), __Vm_mt_43(1), __Vm_mt_48(2), 
-  __Vm_mt_49(1), __Vm_mt_50(1), __Vm_mt_52(1), __Vm_mt_53(2), 
+  __Vm_mt_38(1), __Vm_mt_40(1), __Vm_mt_43(2), __Vm_mt_48(2), 
+  __Vm_mt_49(1), __Vm_mt_50(1), __Vm_mt_51(1), __Vm_mt_53(2), 
   __Vm_mt_54(1), __Vm_mt_55(1), __Vm_mt_56(2), __Vm_mt_58(2), 
-  __Vm_mt_22(2), __Vm_mt_41(2), __Vm_mt_42(1), __Vm_mt_44(1), 
-  __Vm_mt_45(1), __Vm_mt_46(1), __Vm_mt_47(1), __Vm_mt_60(1), 
-  __Vm_mt_61(2), __Vm_mt_62(4), __Vm_mt_final(4), __Vm_threadPoolp(nullptr), 
-  __Vm_even_cycle(false) {
+  __Vm_mt_22(1), __Vm_mt_41(2), __Vm_mt_42(1), __Vm_mt_44(1), 
+  __Vm_mt_45(1), __Vm_mt_46(1), __Vm_mt_47(1), __Vm_mt_59(1), 
+  __Vm_mt_60(2), __Vm_mt_61(1), __Vm_mt_62(4), __Vm_mt_final(4), 
+  __Vm_threadPoolp(nullptr), __Vm_even_cycle(false) {
     VAzadi_top_verilator__Syms* __restrict vlSymsp = __VlSymsp = new VAzadi_top_verilator__Syms(this, name());
     VAzadi_top_verilator* const __restrict vlTOPp VL_ATTR_UNUSED = vlSymsp->TOPp;
     VL_CELL(__PVT__gpio_reg_pkg, VAzadi_top_verilator_gpio_reg_pkg);
@@ -623,8 +623,8 @@ void VAzadi_top_verilator::_settle__TOP__2(VAzadi_top_verilator__Syms* __restric
                                   << 1U) | (IData)(vlTOPp->Azadi_top_verilator__DOT__cio_jtag_tdi))));
     vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__debug_module__DOT__dmi_rsp 
         = (0x3fffffffcULL & vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__debug_module__DOT__dmi_rsp);
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__GPIO__DOT__hw2reg[5U] 
-        = (0x100000U | vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__GPIO__DOT__hw2reg[5U]);
+    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__GPIO__DOT__hw2reg[6U] 
+        = (1U | vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__GPIO__DOT__hw2reg[6U]);
     vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__intr_controller__DOT__gen_target__BRA__0__KET____DOT__u_target__DOT__id_tree[5U] 
         = (0x3ffffffU & vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__intr_controller__DOT__gen_target__BRA__0__KET____DOT__u_target__DOT__id_tree[5U]);
     vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__intr_controller__DOT__gen_target__BRA__0__KET____DOT__u_target__DOT__id_tree[6U] 
@@ -1033,20 +1033,13 @@ void VAzadi_top_verilator::_settle__TOP__4(VAzadi_top_verilator__Syms* __restric
             vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__debug_module__DOT__i_dm_mem__DOT__go = 1U;
         }
     }
-    vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__GPIO__DOT__hw2reg[4U] 
-        = ((0xfffffU & vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__GPIO__DOT__hw2reg[4U]) 
-           | (0xfff00000U & (vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__GPIO__DOT__cio_gpio_q 
-                             << 0x14U)));
     vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__GPIO__DOT__hw2reg[5U] 
-        = ((0xfff00000U & vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__GPIO__DOT__hw2reg[5U]) 
-           | (0xfffffU & (vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__GPIO__DOT__cio_gpio_q 
-                          >> 0xcU)));
+        = vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__GPIO__DOT__cio_gpio_q;
     vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__GPIO__DOT__hw2reg[3U] 
         = (0xffff0000U & vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__GPIO__DOT__cio_gpio_q);
     vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__GPIO__DOT__hw2reg[4U] 
-        = ((0xfff00000U & vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__GPIO__DOT__hw2reg[4U]) 
-           | (0xffc00U & (vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__GPIO__DOT__cio_gpio_q 
-                          << 0xaU)));
+        = (0xffff0000U & (vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__GPIO__DOT__cio_gpio_q 
+                          << 0x10U));
     vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__GPIO__DOT__hw2reg[2U] 
         = vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__GPIO__DOT__cio_gpio_en_q;
     vlTOPp->Azadi_top_verilator__DOT__top_verilator__DOT__GPIO__DOT__hw2reg[0U] 

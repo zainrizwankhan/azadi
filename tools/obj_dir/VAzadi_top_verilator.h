@@ -1832,7 +1832,7 @@ VL_MODULE(VAzadi_top_verilator) {
         // Begin mtask footprint all: 3 12 35 
         IData/*31:0*/ Azadi_top_verilator__DOT__top_verilator__DOT__GPIO__DOT__u_reg__DOT__u_data_in__DOT__q;
         // Begin mtask footprint all: 1 3 12 35 
-        WData/*245:0*/ Azadi_top_verilator__DOT__top_verilator__DOT__GPIO__DOT__hw2reg[8];
+        WData/*257:0*/ Azadi_top_verilator__DOT__top_verilator__DOT__GPIO__DOT__hw2reg[9];
         // Begin mtask footprint all: 1 3 35 
         CData/*0:0*/ Azadi_top_verilator__DOT__top_verilator__DOT__GPIO__DOT__u_reg__DOT__intr_ctrl_en_falling_we;
         CData/*0:0*/ Azadi_top_verilator__DOT__top_verilator__DOT__GPIO__DOT__u_reg__DOT__intr_ctrl_en_lvlhigh_we;
@@ -2578,7 +2578,7 @@ VL_MODULE(VAzadi_top_verilator) {
     VlMTaskVertex __Vm_mt_48;
     VlMTaskVertex __Vm_mt_49;
     VlMTaskVertex __Vm_mt_50;
-    VlMTaskVertex __Vm_mt_52;
+    VlMTaskVertex __Vm_mt_51;
     VlMTaskVertex __Vm_mt_53;
     VlMTaskVertex __Vm_mt_54;
     VlMTaskVertex __Vm_mt_55;
@@ -2591,6 +2591,7 @@ VL_MODULE(VAzadi_top_verilator) {
     VlMTaskVertex __Vm_mt_45;
     VlMTaskVertex __Vm_mt_46;
     VlMTaskVertex __Vm_mt_47;
+    VlMTaskVertex __Vm_mt_59;
     VlMTaskVertex __Vm_mt_60;
     VlMTaskVertex __Vm_mt_61;
     VlMTaskVertex __Vm_mt_62;
