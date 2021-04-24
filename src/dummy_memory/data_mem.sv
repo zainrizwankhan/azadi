@@ -34,15 +34,39 @@ module data_mem
   assign data_we[1:0] = (wmask_i[23:16] != 8'b0) ? 2'b11: 2'b0;
   assign data_we[3:2] = (wmask_i[31:24] != 8'b0) ? 2'b11: 2'b0; 
   
-DFFRAM dccm (
+// DFFRAM dccm (
 
-    .CLK    (clock),
-    .EN     (req_i), // chip enable
-    .WE     (data_we), //write mask
-    .Di     (wdata_i), //data input
-    .Do     (rdata_o), // data output
-    .A      (addr_i) // address
+//     .CLK    (clock),
+//     .EN     (req_i), // chip enable
+//     .WE     (data_we), //write mask
+//     .Di     (wdata_i), //data input
+//     .Do     (rdata_o), // data output
+//     .A      (addr_i) // address
+// );
+
+sram #(
+  .NUM_WMASKS  (4), 
+  .DATA_WIDTH  (32),
+  .ADDR_WIDTH  (12),
+  .DELAY       (0),
+  .IZERO       (1),
+  .IFILE       ("")
+) iccm (
+  
+  .clk0     (clock),
+  .csb0     (~req_i),
+  .web0     (~we_i),
+  .wmask0   (data_we),
+  .addr0    (addr_i),
+  .din0     (wdata_i),
+  .dout0    (rdata_o),
+
+  .clk1     (0),
+  .csb1     (0),
+  .addr1    (0),
+  .dout1    ()
 );
+
 
 tlul_sram_adapter #(
   .SramAw       (12),

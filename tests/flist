@@ -221,3 +221,4 @@ $AZADI_ROOT/src/primitives/rtl/prim_generic_flop_2sync.sv
 $AZADI_ROOT/src/primitives/rtl/prim_generic_clock_gating.sv
 $AZADI_ROOT/src/primitives/rtl/prim_generic_flop.sv
 $AZADI_ROOT/src/TileLink/rtl/xbar_mai_t.sv
+$AZADI_ROOT/src/dummy_memory/sram.v

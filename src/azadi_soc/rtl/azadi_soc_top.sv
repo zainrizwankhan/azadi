@@ -455,7 +455,8 @@ instr_mem_top iccm (
   .wdata      (),
   .rdata      (tlul_data),
   .rvalid     (instr_valid),
-  .we         ('0)
+  .wmask      ('0),
+  .we         (0)
 );
 
  tlul_sram_adapter #(

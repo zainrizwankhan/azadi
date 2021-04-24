@@ -9,10 +9,11 @@ module instr_mem_top
   input  logic [31:0] wdata,
   output logic [31:0] rdata,
   output logic        rvalid,
-  input  logic [3:0]  we
+  input  logic [3:0]  wmask,
+  input  logic        we
 );
 
-  always_ff @(posedge clock) begin
+  always_ff @(negedge clock) begin
   if (!reset) begin
     rvalid <= 1'b0;
   end else if (we) begin
@@ -22,14 +23,29 @@ module instr_mem_top
   end
   end
 
-DFFRAM iccm (
 
-    .CLK    (clock),
-    .EN     (req), // chip enable
-    .WE     (we), //write mask
-    .Di     (wdata), //data input
-    .Do     (rdata), // data output
-    .A      (addr) // address
+sram #(
+  .NUM_WMASKS  (4), 
+  .DATA_WIDTH  (32),
+  .ADDR_WIDTH  (12),
+  .DELAY       (0),
+  .IZERO       (0),
+  .IFILE       ("/home/merl/github_repos/azadi/tests/prog")
+) iccm (
+  
+  .clk0     (clock),
+  .csb0     (~req),
+  .web0     (~we),
+  .wmask0   (wmask),
+  .addr0    (addr),
+  .din0     (wdata),
+  .dout0    (rdata),
+
+  .clk1     (0),
+  .csb1     (0),
+  .addr1    (0),
+  .dout1    ()
 );
+
 
 endmodule
