@@ -4,8 +4,8 @@ module azadi_soc_top #(
   parameter logic [31:0] JTAG_ID = 32'h 0000_0001,
   parameter logic DirectDmiTap = 1'b1
 )(
-  input clock,
-  input reset_ni,
+  input clk_i,
+  input rst_ni,
 //  input uart_rx_i,
 
   input  logic [19:0] gpio_i,
@@ -204,8 +204,8 @@ brq_core_top #(
     .DmHaltAddr       (tl_main_pkg::ADDR_SPACE_DEBUG_ROM + 32'h 800), 
     .DmExceptionAddr  (tl_main_pkg::ADDR_SPACE_DEBUG_ROM + dm::ExceptionAddress) 
 ) u_top (
-    .clock (clock),
-    .reset (system_rst_ni),
+    .clk_i (clk_i),
+    .rst_ni (system_rst_ni),
 
   // instruction memory interface 
     .tl_i_i (xbar_to_ifu),
@@ -243,7 +243,7 @@ brq_core_top #(
   .IdcodeValue(JTAG_ID),
   .DirectDmiTap (DirectDmiTap)
   ) debug_module (
-  .clk_i(clock),       // clock
+  .clk_i(clk_i),       // clock
   .rst_ni(reset_ni),      // asynchronous reset active low, connect PoR
                                           // here, not the system reset
   .testmode_i(),
@@ -269,7 +269,7 @@ brq_core_top #(
 
 // main xbar module
   tl_xbar_main main_swith (
-  .clk_main_i         (clock),
+  .clk_main_i         (clk_i),
   .rst_main_ni        (system_rst_ni),
 
   // Host interfaces
@@ -310,8 +310,8 @@ brq_core_top #(
 // dummy data memory
 
 data_mem dccm(
-  .clock    (clock),
-  .reset    (system_rst_ni),
+  .clk_i    (clk_i),
+  .rst_ni    (system_rst_ni),
 
 // tl-ul insterface
   .tl_d_i   (xbar_to_dccm),
@@ -319,7 +319,7 @@ data_mem dccm(
 );
 
 rv_timer timer0(
-  .clk_i  (clock),
+  .clk_i  (clk_i),
   .rst_ni (system_rst_ni),
 
   .tl_i   (xbar_to_timer),
@@ -332,7 +332,7 @@ rv_timer timer0(
 //peripheral xbar
 
 xbar_periph periph_switch (
-  .clk_peri_i         (clock),
+  .clk_peri_i         (clk_i),
   .rst_peri_ni        (system_rst_ni),
 
   // Host interfaces
@@ -375,7 +375,7 @@ xbar_periph periph_switch (
 
 pwm_top u_pwm(
 
-  .clk_i   (clock),
+  .clk_i   (clk_i),
   .rst_ni  (system_rst_ni),
 
   .tl_i    (xbar_to_pwm),
@@ -391,7 +391,7 @@ pwm_top u_pwm(
 
 spi_top u_spi_host(
 
-  .clk_i       (clock),
+  .clk_i       (clk_i),
   .rst_ni      (system_rst_ni),
 
   .tl_i        (xbar_to_spi),
@@ -408,7 +408,7 @@ spi_top u_spi_host(
 
 //GPIO module
  gpio GPIO (
-  .clk_i          (clock),
+  .clk_i          (clk_i),
   .rst_ni         (system_rst_ni),
 
   // Below Regster interface can be changed
@@ -426,7 +426,7 @@ spi_top u_spi_host(
 
 
  iccm_controller u_dut(
-	.clk_i       (clock),
+	.clk_i       (clk_i),
 	.rst_ni      (RESET),
 	.rx_dv_i     (rx_dv_i),
 	.rx_byte_i   (rx_byte_i),
@@ -437,7 +437,7 @@ spi_top u_spi_host(
 );
 
  uart_receiver programmer (
- .i_Clock       (clock),
+ .i_Clock       (clk_i),
  .rst_ni        (RESET),
  .i_Rx_Serial   (uart_rx_i),
  .CLKS_PER_BIT  (15'd87),
@@ -447,8 +447,8 @@ spi_top u_spi_host(
 
 
 instr_mem_top iccm (
-  .clock      (clock),
-  .reset      (system_rst_ni),
+  .clk_i      (clk_i),
+  .rst_ni      (system_rst_ni),
 
   .req        (req_i),
   .addr       (tlul_addr),
@@ -468,7 +468,7 @@ instr_mem_top iccm (
   .ErrOnRead    (0)   // 1: Reads not allowed, automatically error  
 
 ) inst_mem (
-    .clk_i     (clock),
+    .clk_i     (clk_i),
     .rst_ni    (system_rst_ni),
     .tl_i      (xbar_to_iccm),
     .tl_o      (iccm_to_xbar), 
@@ -484,15 +484,15 @@ instr_mem_top iccm (
     );
 
 rstmgr reset_manager(
-  .clk_i(clock),
-  .rst_ni(reset_ni),
+  .clk_i(clk_i),
+  .rst_ni(rst_ni),
   .ndmreset (dbg_rst),
   .sys_rst_ni(system_rst_ni)
 );
 
 
 rv_plic intr_controller (
-  .clk_i(clock),
+  .clk_i(clk_i),
   .rst_ni(system_rst_ni),
 
   // Bus Interface (device)
@@ -510,7 +510,7 @@ rv_plic intr_controller (
 );
 
 uart u_uart0(
-  .clk_i                   (clock             ),
+  .clk_i                   (clk_i             ),
   .rst_ni                  (system_rst_ni     ),
 
   // Bus Interface

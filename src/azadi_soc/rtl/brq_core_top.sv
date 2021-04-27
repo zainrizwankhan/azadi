@@ -23,8 +23,8 @@ module brq_core_top #(
     parameter int unsigned        DmExceptionAddr  = 0
 )
 (
-  input clock,
-  input reset,
+  input clk_i,
+  input rst_ni,
 
   // instruction memory interface 
     input tlul_pkg::tl_d2h_t tl_i_i,
@@ -57,8 +57,6 @@ module brq_core_top #(
 );
 import brq_pkg::*;
 
-  logic rst_ni;
-  assign rst_ni = reset;
   // Instruction interface (internal)
   logic        instr_req;
   logic        instr_gnt;
@@ -102,7 +100,7 @@ brq_core #(
     .DmExceptionAddr  (DmExceptionAddr) 
 ) u_core (
     // Clock and Reset
-    .clk_i (clock),
+    .clk_i (clk_i),
     .rst_ni(rst_ni),
 
     .test_en_i (test_en_i),     // enable all clock gates for testing
@@ -178,8 +176,8 @@ brq_core #(
 tlul_host_adapter #(
   .MAX_REQS(2)
 ) intr_interface (
-  .clock (clock),
-  .reset (reset),
+  .clk_i (clk_i),
+  .rst_ni (rst_ni),
   .req_i (instr_req),
   .gnt_o (instr_gnt),
   .addr_i (instr_addr),
@@ -196,8 +194,8 @@ tlul_host_adapter #(
 tlul_host_adapter #(
   .MAX_REQS (2)
 ) data_interface (
-  .clock (clock),
-  .reset (reset),
+  .clk_i (clk_i),
+  .rst_ni (rst_ni),
   .req_i (data_req),
   .gnt_o (data_gnt),
   .addr_i (data_addr),

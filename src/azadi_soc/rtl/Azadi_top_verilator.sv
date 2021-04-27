@@ -62,8 +62,8 @@ module Azadi_top_verilator #(
     .JTAG_ID(JTAG_IDCODE),
     .DirectDmiTap (DirectDmiTap)
   ) top_verilator(
-    .clock(clock_i),
-    .reset_ni(reset_ni),
+    .clk_i(clock_i),
+    .rst_ni(reset_ni),
    // .uart_rx_i(),
   
     .gpio_i(gpio_i),

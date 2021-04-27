@@ -1,8 +1,8 @@
 
 module instr_mem_top
 (
-  input clock,
-  input reset,
+  input clk_i,
+  input rst_ni,
 
   input  logic        req,
   input  logic [11:0] addr,
@@ -13,8 +13,8 @@ module instr_mem_top
   input  logic        we
 );
 
-  always_ff @(negedge clock) begin
-  if (!reset) begin
+  always_ff @(negedge clk_i) begin
+  if (!rst_ni) begin
     rvalid <= 1'b0;
   end else if (we) begin
     rvalid <= 1'b0;
@@ -33,7 +33,7 @@ sram #(
   .IFILE       ("/home/merl/github_repos/azadi/tests/prog")
 ) iccm (
   
-  .clk0     (clock),
+  .clk0     (clk_i),
   .csb0     (~req),
   .web0     (~we),
   .wmask0   (wmask),
