@@ -26,7 +26,7 @@
 // Use SPI_MAX_CHAR for fine tuning the exact number, when using
 // SPI_MAX_CHAR_32, SPI_MAX_CHAR_24, SPI_MAX_CHAR_16, SPI_MAX_CHAR_8.
 //
-`define SPI_MAX_CHAR_128
+`define SPI_MAX_CHAR_32
 //`define SPI_MAX_CHAR_64
 //`define SPI_MAX_CHAR_32
 //`define SPI_MAX_CHAR_24
@@ -62,11 +62,13 @@
 // Number of device select signals. Use SPI_SS_NB for fine tuning the 
 // exact number.
 //
-`define SPI_SS_NB_8
+`define SPI_SS_NB_4
 //`define SPI_SS_NB_16
 //`define SPI_SS_NB_24
 //`define SPI_SS_NB_32
-
+`ifdef SPI_SS_NB_4
+  `define SPI_SS_NB             4    // Can be set from 1 to 8
+`endif
 `ifdef SPI_SS_NB_8
   `define SPI_SS_NB             8    // Can be set from 1 to 8
 `endif

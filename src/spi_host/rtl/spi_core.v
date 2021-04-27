@@ -1,4 +1,4 @@
-`include "/home/merl/github_repos/azadi/src/spi_host/rtl/spi_defines.v"
+//`include "/home/merl/github_repos/azadi/src/spi_host/rtl/spi_defines.v"
 module spi_core
 (
   // tlul signals
@@ -41,7 +41,7 @@ module spi_core
   wire                             ass;              // automatic slave select
   wire                             spi_divider_sel;  // divider register select
   wire                             spi_ctrl_sel;     // ctrl register select
-  wire                       [3:0] spi_tx_sel;       // tx_l register select
+  wire                             spi_tx_sel;       // tx_l register select
   wire                             spi_ss_sel;       // ss register select
   wire                             tip;              // transfer in progress
   wire                             pos_edge;         // recognize posedge of sclk
@@ -51,10 +51,7 @@ module spi_core
   // Address decoder
   assign spi_divider_sel = we_i & ~re_i & (addr_i[`SPI_OFS_BITS] == `SPI_DEVIDE);
   assign spi_ctrl_sel    = we_i & ~re_i & (addr_i[`SPI_OFS_BITS] == `SPI_CTRL);
-  assign spi_tx_sel[0]   = we_i & ~re_i & (addr_i[`SPI_OFS_BITS] == `SPI_TX_0);
-  assign spi_tx_sel[1]   = we_i & ~re_i & (addr_i[`SPI_OFS_BITS] == `SPI_TX_1);
-  assign spi_tx_sel[2]   = we_i & ~re_i & (addr_i[`SPI_OFS_BITS] == `SPI_TX_2);
-  assign spi_tx_sel[3]   = we_i & ~re_i & (addr_i[`SPI_OFS_BITS] == `SPI_TX_3);
+  assign spi_tx_sel   = we_i & ~re_i & (addr_i[`SPI_OFS_BITS] == `SPI_TX_0);
   assign spi_ss_sel      = we_i & ~re_i & (addr_i[`SPI_OFS_BITS] == `SPI_SS);
   
   // Read from registers
@@ -228,7 +225,7 @@ module spi_core
     .clk          (clk_i), 
     .rst          (~rst_ni), 
     .len          (char_len[`SPI_CHAR_LEN_BITS-1:0]),
-    .latch        (spi_tx_sel[3:0] & {4{we_i}}), 
+    .latch        (spi_tx_sel & we_i), 
     .byte_sel     (be_i), 
     .lsb          (lsb), 
     .go           (go), 

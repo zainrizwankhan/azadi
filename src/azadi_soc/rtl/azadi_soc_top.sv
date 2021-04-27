@@ -244,7 +244,7 @@ brq_core_top #(
   .DirectDmiTap (DirectDmiTap)
   ) debug_module (
   .clk_i(clk_i),       // clock
-  .rst_ni(reset_ni),      // asynchronous reset active low, connect PoR
+  .rst_ni(rst_ni),      // asynchronous reset active low, connect PoR
                                           // here, not the system reset
   .testmode_i(),
   .ndmreset_o(dbg_rst),  // non-debug module reset
@@ -478,7 +478,7 @@ instr_mem_top iccm (
     .addr_o    (tlul_addr),
     .wdata_o   (),
     .wmask_o   (),
-    .rdata_i   ((reset_ni) ? tlul_data: '0),
+    .rdata_i   ((system_rst_ni) ? tlul_data: '0),
     .rvalid_i  (instr_valid),
     .rerror_i  (2'b0)
     );
