@@ -86,7 +86,8 @@ module tlul_host_adapter #(
 
     assign gnt_o = tl_h_c_d.a_ready;
     //assign rdata_0 = tl_h_c_d.d_data;
-    assign err_o   = tl_h_c_d.d_error;
+    // assign err_o   = tl_h_c_d.d_error;
+    assign err_o   = 1'b0;
     assign valid_o = tl_h_c_d.d_valid;
     logic [31:0] rddata;
     assign rddata = tl_h_c_d.d_data;
