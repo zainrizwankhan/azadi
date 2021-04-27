@@ -1,4 +1,4 @@
-`include "/home/merl/github_repos/azadi/src/spi_host/rtl/spi_defines.v"
+// `include "/home/merl/github_repos/azadi/src/spi_host/rtl/spi_defines.v"
 module spi_core
 (
   // tlul signals
