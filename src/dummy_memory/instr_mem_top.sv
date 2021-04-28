@@ -30,7 +30,7 @@ sram #(
   .ADDR_WIDTH  (12),
   .DELAY       (0),
   .IZERO       (0),
-  .IFILE       ("/home/usman/Documents/azadi-sdk/program")
+  .IFILE       ("../tests/asm/output/program")
 ) iccm (
   
   .clk0     (clk_i),
